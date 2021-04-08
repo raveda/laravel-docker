@@ -28,7 +28,11 @@ jobs:
     - uses: azure/webapps-deploy@v2
       with:
         app-name: 'laravelgithub'
+        slot-name: 'staging'
         images: 'ravedaacr.azurecr.io/laravelsample:${{ github.sha }}'
+        
+    - name: 'Swap with preview'
+      run: az webapp deployment slot swap -g DemoContainers -n laravelngx --slot staging --target-slot production  
     
     - name: Azure logout
       run: |
