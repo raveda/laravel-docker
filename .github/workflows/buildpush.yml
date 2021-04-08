@@ -32,7 +32,7 @@ jobs:
         images: 'ravedaacr.azurecr.io/laravelsample:${{ github.sha }}'
         
     - name: 'Swap with preview'
-      run: az webapp deployment slot swap -g democontainers -n laravelgithub --slot staging --target-slot production  
+      run: az webapp deployment slot auto-swap -g democontainers -n laravelgithub --slot staging --target-slot production  
     
     - name: Azure logout
       run: |
